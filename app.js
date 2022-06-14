@@ -4,11 +4,12 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+var indexRouter = require('./routes/Index');
 var alumnosRouter = require('./routes/Alumnos');
 var cursosRouter = require('./routes/Cursos');
-var examenesRouter = require('./routes/Examenesjs');
+var examenesRouter = require('./routes/Examenes');
 var preguntasRouter = require('./routes/Preguntas');
-const videosRouter = require('./routes/Videos');
+var videosRouter = require('./routes/Videos');
 
 var app = express();
 
@@ -22,12 +23,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter); //VERR
+app.use('/', indexRouter);
 app.use('/api/tpIntegrador/', alumnosRouter);
 app.use('/api/tpIntegrador/', cursosRouter);
 app.use('/api/tpIntegrador/', examenesRouter);
 app.use('/api/tpIntegrador/', preguntasRouter);
-app.use('/api/tpIntegrador/', videosRouter);6
+app.use('/api/tpIntegrador/', videosRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
