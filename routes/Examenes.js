@@ -38,6 +38,8 @@ router.put('/examenes/borrarExamen/:id', async(req,res)=>{
     }
 });
 
+/// ** APIS ESPECIALES ** ///
+
 /* GET api/examenes/consultarSaldo/:id_Examen */
 router.get('/examenes/consultarSaldo/:id', async (req, res) => {
     try{
@@ -46,8 +48,6 @@ router.get('/examenes/consultarSaldo/:id', async (req, res) => {
         res.sendStatus(400).json(err)
     }
 });
-
-/* GET api/examenes/consultarCursoPago/:email */
 
 /* PUT api/examenes/actualizarNota/:email */
 

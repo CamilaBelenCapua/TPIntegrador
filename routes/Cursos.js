@@ -42,4 +42,6 @@ router.put('/cursos/borrarCurso/:id ', async(req,res)=>{
     }
 });
 
+/* GET api/examenes/consultarCursoPago/:email */
+
 module.exports = router;
