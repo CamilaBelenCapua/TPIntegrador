@@ -14,4 +14,8 @@ async function borrarCurso(id){
     return cursos.borrarCurso(id);
 }
 
-module.exports = {getCursoId,agregarCurso,actualizarCurso,borrarCurso};
+async function getTodosCursos(){    
+    return movies.getTodosCursos();
+}
+
+module.exports = {getCursoId,agregarCurso,actualizarCurso,borrarCurso, getTodosCursos};

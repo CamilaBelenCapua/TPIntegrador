@@ -41,4 +41,14 @@ async function borrarCurso(id){
     return result;
 }
 
-module.exports = {getCursoId, agregarCurso, actualizarCurso, borrarCurso };
+async function getTodosCursos(){
+    const connectiondb = await conn.getConnection();
+    const cursos = await connectiondb
+                        .db(DATABASE)
+                        .collection(CURSOS)
+                        .find({})
+                        .toArray();    
+    return cursos;
+}
+
+module.exports = {getCursoId, agregarCurso, actualizarCurso, borrarCurso, getTodosCursos};

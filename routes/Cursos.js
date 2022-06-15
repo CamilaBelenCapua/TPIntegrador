@@ -42,6 +42,18 @@ router.put('/cursos/borrarCurso/:id ', async(req,res)=>{
     }
 });
 
+
+/// ** APIS ESPECIALES ** ///
+
+/* GET api/cursos/listarCursos */
+router.get('/', async (req, res) => {    
+    try{
+        res.json(await controller.getTodosCursos());
+    }catch(err){
+        res.sendStatus(400).json(err)
+    }
+});
+
 /* GET api/examenes/consultarCursoPago/:email */
 
 module.exports = router;
