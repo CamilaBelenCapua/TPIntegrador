@@ -1,4 +1,3 @@
-//const { json } = require('express/lib/response');
 const conn = require('./conn');
 const DATABASE = 'tp_integrador';
 const CURSOS = 'Cursos';
@@ -15,29 +14,29 @@ async function getCursoId(id){
 }
 
 async function agregarCurso(curso){
-    const clientMongo = await connection.getConnection();
-    const result = await clientMongo
+    const connectiondb = await conn.getConnection();
+    const result = await connectiondb
                         .db(DATABASE)
                         .collection(CURSOS)
                         .insertOne(curso);
     return result;
 }
 
-async function actualizarCurso(curso){
-    const clientMongo = await connection.getConnection();
-    const result = await clientMongo
+async function actualizarCurso(curso, id){
+    const connectiondb = await conn.getConnection();
+    const result = await connectiondb
                         .db(DATABASE)
-                        .collection(CURSOS)   
-                        .updateOne(curso);
+                        .collection(CURSOS)
+                        .updateOne({_id: new objectId(id)}, {$set: {name: curso.name}});
     return result;
 }
 
 async function borrarCurso(id){
-    const clientMongo = await connection.getConnection();
-    const result = await clientMongo
+    const connectiondb = await conn.getConnection();
+    const result = await connectiondb
                         .db(DATABASE)
                         .collection(CURSOS)
-                        .deleteOne(find({_id: new objectId(id)}));
+                        .deleteOne({_id: new objectId(id)});
     return result;
 }
 

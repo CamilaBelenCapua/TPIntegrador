@@ -30,7 +30,7 @@ router.put('/videos/actualizarVideo/:id', async(req,res)=>{
 });
 
 /* DELETE api/videos/borrarVideo:id */
-router.put('/videos/borrarVideo/:id', async(req,res)=>{
+router.delete('/videos/borrarVideo/:id', async(req,res)=>{
     try{  
         res.json(await controller.borrarVideo(req.params.id));
     }catch(err){

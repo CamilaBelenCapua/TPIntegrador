@@ -21,7 +21,7 @@ router.get('/alumnos/consultarAlumno/:id', async (req, res) => {
 });
 
 /* POST api/alumnos/agregarAlumno BODY -> DATOS */
-router.post('/examenes/agregarExamen', async(req, res) => {
+router.post('/alumnos/agregarAlumno', async(req, res) => {
     try{
         res.json(await controller.agregarAlumno(req.body));
     }catch(err){
@@ -38,8 +38,8 @@ router.put('/alumnos/actualizarAlumno', async(req,res)=>{
     }
 });
 
-/* DELETE api/alumnos/borrarAlumno:id */
-router.put('/alumnos/borrarAlumno:id ', async(req,res)=>{
+/* DELETE api/alumnos/borrarAlumno/:id */
+router.delete('/alumnos/borrarAlumno/:id', async(req,res)=>{
     try{
         res.json(await controller.borrarAlumno(req.params.id));
     }catch(err){

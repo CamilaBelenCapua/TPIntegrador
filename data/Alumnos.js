@@ -25,8 +25,8 @@ async function getAlumnoId(id){
 }
 
 async function agregarAlumno(alumno){
-    const clientMongo = await connection.getConnection();
-    const result = await clientMongo
+    const connectiondb = await conn.getConnection();
+    const result = await connectiondb
                         .db(DATABASE)
                         .collection(ALUMNOS)
                         .insertOne(alumno);
@@ -34,8 +34,8 @@ async function agregarAlumno(alumno){
 }
 
 async function actualizarAlumno(alumno){
-    const clientMongo = await connection.getConnection();
-    const result = await clientMongo
+    const connectiondb = await conn.getConnection();
+    const result = await connectiondb
                         .db(DATABASE)
                         .collection(ALUMNOS)   
                         .updateOne(alumno);
@@ -43,11 +43,11 @@ async function actualizarAlumno(alumno){
 }
 
 async function borrarAlumno(id){
-    const clientMongo = await connection.getConnection();
-    const result = await clientMongo
+    const connectiondb = await conn.getConnection();
+    const result = await connectiondb
                         .db(DATABASE)
                         .collection(ALUMNOS)
-                        .deleteOne(find({_id: new objectId(id)}));
+                        .deleteOne({_id: new objectId(id)});
     return result;
 }
 

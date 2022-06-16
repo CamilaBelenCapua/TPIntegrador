@@ -24,11 +24,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/api/tpIntegrador/', alumnosRouter);
-app.use('/api/tpIntegrador/', cursosRouter);
-app.use('/api/tpIntegrador/', examenesRouter);
-app.use('/api/tpIntegrador/', preguntasRouter);
-app.use('/api/tpIntegrador/', videosRouter);
+app.use('/api/', alumnosRouter);
+app.use('/api/', cursosRouter);
+app.use('/api/', examenesRouter);
+app.use('/api/', preguntasRouter);
+app.use('/api/', videosRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

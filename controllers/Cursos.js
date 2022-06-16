@@ -7,15 +7,15 @@ async function getCursoId(id){
 async function agregarCurso(curso){
     return cursos.agregarCurso(curso);
 }
-async function actualizarCurso(curso){
-    return cursos.actualizarCurso(curso);
+async function actualizarCurso(curso, id){
+    return cursos.actualizarCurso(curso, id);
 }
 async function borrarCurso(id){    
     return cursos.borrarCurso(id);
 }
 
 async function getTodosCursos(){    
-    return movies.getTodosCursos();
+    return cursos.getTodosCursos();
 }
 
 module.exports = {getCursoId,agregarCurso,actualizarCurso,borrarCurso, getTodosCursos};

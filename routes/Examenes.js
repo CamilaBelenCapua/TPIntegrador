@@ -30,7 +30,7 @@ router.put('/examenes/actualizarExamen', async(req,res)=>{
 });
 
 /* DELETE api/examenes/borrarExamen:id */
-router.put('/examenes/borrarExamen/:id', async(req,res)=>{
+router.delete('/examenes/borrarExamen/:id', async(req,res)=>{
     try{
         res.json(await controller.borrarExamen(req.params.id));
     }catch(err){

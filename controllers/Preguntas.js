@@ -13,7 +13,7 @@ async function actualizarPregunta(pregunta){
 }
 
 async function borrarPregunta(id){    
-    return preguntas.borrarExamen(id);
+    return preguntas.borrarPregunta(id);
 }
 
 module.exports = {getPregunta, agregarPregunta, actualizarPregunta, borrarPregunta};

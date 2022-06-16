@@ -1,10 +1,9 @@
-//const { json } = require('express/lib/response');
 const conn = require('./conn');
 const DATABASE = 'tp_integrador';
 const VIDEOS = 'Videos';
 const objectId = require('mongodb').ObjectId;
 
-async function consultarVideo(id){
+async function getVideo(id){
     const connectiondb = await conn.getConnection();
     const video = await connectiondb
                 .db(DATABASE)
@@ -15,8 +14,8 @@ async function consultarVideo(id){
 }
 
 async function agregarVideo(video){
-    const clientMongo = await connection.getConnection();
-    const result = await clientMongo
+    const connectiondb = await conn.getConnection();
+    const result = await connectiondb
                 .db(DATABASE)
                 .collection(VIDEOS)
                 .insertOne(video);
@@ -24,8 +23,8 @@ async function agregarVideo(video){
 }
 
 async function actualizarVideo(video){
-    const clientMongo = await connection.getConnection();
-    const result = await clientMongo
+    const connectiondb = await conn.getConnection();
+    const result = await connectiondb
                 .db(DATABASE)
                 .collection(VIDEOS)
                 .updateOne(video);
@@ -33,12 +32,12 @@ async function actualizarVideo(video){
 }
 
 async function borrarVideo(id){
-    const clientMongo = await connection.getConnection();
-    const result = await clientMongo
+    const connectiondb = await conn.getConnection();
+    const result = await connectiondb
                 .db(DATABASE)
                 .collection(VIDEOS)
-                .deleteOne(find({_id: new objectId(id)}));
+                .deleteOne({_id: new objectId(id)});
     return result;
 }
 
-module.exports = {consultarVideo, agregarVideo, actualizarVideo, borrarVideo};
+module.exports = {getVideo, agregarVideo, actualizarVideo, borrarVideo};

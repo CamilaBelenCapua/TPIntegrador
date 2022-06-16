@@ -1,5 +1,4 @@
 /*const { json } = require('express/lib/response');*/
-
 const conn = require('./conn');
 const DATABASE = 'tp_integrador';
 const EXAMENES = 'Examenes';
@@ -15,8 +14,8 @@ async function getExamen(id){
     return exam;
 }
 async function agregarExamen(examen){
-    const clientMongo = await connection.getConnection();
-    const result = await clientMongo
+    const connectiondb = await conn.getConnection();
+    const result = await connectiondb
                 .db(DATABASE)
                 .collection(EXAMENES)
                 .insertOne(examen);
@@ -24,8 +23,8 @@ async function agregarExamen(examen){
 }
 
 async function actualizarExamen(examen){
-    const clientMongo = await connection.getConnection();
-    const result = await clientMongo
+    const connectiondb = await conn.getConnection();
+    const result = await connectiondb
                 .db(DATABASE)
                 .collection(EXAMENES)   
                 .updateOne(examen);
@@ -33,11 +32,11 @@ async function actualizarExamen(examen){
 }
 
 async function borrarExamen(id){
-    const clientMongo = await connection.getConnection();
-    const result = await clientMongo
+    const connectiondb = await conn.getConnection();
+    const result = await connectiondb
                 .db(DATABASE)
                 .collection(EXAMENES)
-                .deleteOne(find({_id: new objectId(id)}));
+                .deleteOne({_id: new objectId(id)});
     return result;
 }
 
