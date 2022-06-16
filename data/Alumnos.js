@@ -3,6 +3,7 @@ const conn = require('./conn');
 const DATABASE = 'tp_integrador';
 const ALUMNOS = 'Alumnos';
 const objectId = require('mongodb').ObjectId;
+const bcrypt = require('bcrypt');
 
 async function getAlumnoEmail(email){
     const connectiondb = await conn.getConnection();
@@ -26,6 +27,8 @@ async function getAlumnoId(id){
 
 async function agregarAlumno(alumno){
     const connectiondb = await conn.getConnection();
+    alumno.password = await bcrypt.hash(alumno.password, 8);
+
     const result = await connectiondb
                         .db(DATABASE)
                         .collection(ALUMNOS)
