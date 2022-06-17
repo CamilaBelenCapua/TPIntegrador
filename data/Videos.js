@@ -1,6 +1,6 @@
 const conn = require('./conn');
 const DATABASE = 'tp_integrador';
-const VIDEOS = 'Videos';
+const VIDEOS = 'Examenes';
 const objectId = require('mongodb').ObjectId;
 
 async function getVideo(id){

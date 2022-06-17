@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const controller = require('../controllers/Alumnos');
 
-/* GET alumnos/consultarAlumnoPorMail/:email */
+/* GET api/alumnos/consultarAlumnoPorMail/:email */
 router.get('/alumnos/consultarAlumnoPorMail/:email', async (req, res) => {
     try{   
         res.json(await controller.getAlumnoEmail(req.params.email));
@@ -11,7 +11,7 @@ router.get('/alumnos/consultarAlumnoPorMail/:email', async (req, res) => {
     }
 });
 
-/* GET alumnos/consultarAlumno/:id */
+/* GET api/alumnos/consultarAlumno/:id */
 router.get('/alumnos/consultarAlumno/:id', async (req, res) => {
     try{
         res.json(await controller.getAlumnoId(req.params.id));

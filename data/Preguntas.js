@@ -1,6 +1,6 @@
 const conn = require('./conn');
 const DATABASE = 'tp_integrador';
-const PREGUNTAS = 'Preguntas';
+const PREGUNTAS = 'Examenes';
 const objectId = require('mongodb').ObjectId;
 
 async function getPregunta(id){

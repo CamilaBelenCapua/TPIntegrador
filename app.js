@@ -6,8 +6,8 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/Index');
 var alumnosRouter = require('./routes/Alumnos');
-var cursosRouter = require('./routes/Cursos');
 var examenesRouter = require('./routes/Examenes');
+var resultadosRouter = require('./routes/Resultados');
 var preguntasRouter = require('./routes/Preguntas');
 var videosRouter = require('./routes/Videos');
 
@@ -25,8 +25,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/api/', alumnosRouter);
-app.use('/api/', cursosRouter);
 app.use('/api/', examenesRouter);
+app.use('/api/', resultadosRouter);
 app.use('/api/', preguntasRouter);
 app.use('/api/', videosRouter);
 
