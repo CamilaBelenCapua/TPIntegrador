@@ -29,6 +29,14 @@ router.post('/alumnos/agregarAlumno', async(req, res) => {
     }
 });
 
+router.post('/alumnos/agregarProfesor', async(req, res) => {
+    try{
+        res.json(await controller.agregarProfesor(req.body));
+    }catch(err){
+        res.sendStatus(400).json(err)
+    }
+});
+
 /* PUT api/alumnos/actualizarAlumno/:id BODY -> DATOS */
 router.put('/alumnos/actualizarAlumno/:id', async(req,res)=>{
     try{

@@ -12,6 +12,10 @@ async function agregarAlumno(alumno){
     return alumnos.agregarAlumno(alumno);
 }
 
+async function agregarProfesor(profesor){
+    return alumnos.agregarProfesor(profesor);
+}
+
 async function actualizarAlumno(alumno, id){
     return alumnos.actualizarAlumno(alumno, id);
 }
@@ -24,4 +28,4 @@ async function getTodosAlumnos(){
     return alumnos.getTodosAlumnos();
 }
 
-module.exports = {getAlumnoEmail, getAlumnoId, agregarAlumno, actualizarAlumno, borrarAlumno, getTodosAlumnos};
+module.exports = {getAlumnoEmail, getAlumnoId, agregarAlumno, agregarProfesor, actualizarAlumno, borrarAlumno, getTodosAlumnos};
