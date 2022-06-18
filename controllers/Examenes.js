@@ -7,9 +7,11 @@ async function getExamen(id){
 async function agregarExamen(examen){
     return examenes.agregarExamen(examen);
 }
+
 async function actualizarExamen(examen, id){
     return examenes.actualizarExamen(examen, id);
 }
+
 async function borrarExamen(id){    
     return examenes.borrarExamen(id);
 }
@@ -18,8 +20,14 @@ async function getTodosExamenes(){
     return examenes.getTodosExamenes();
 }
 
+async function agregarVideosExamen(id, resultado){
+    return resultados.agregarVideosExamen(id, resultado);
+}
+
+/*
 async function consultarSaldo(id){    
     return examenes.consultarSaldo(id);
 }
+*/
 
-module.exports = {getExamen,agregarExamen,actualizarExamen,borrarExamen, getTodosExamenes, consultarSaldo};
+module.exports = {getExamen,agregarExamen,actualizarExamen,borrarExamen, getTodosExamenes, agregarVideosExamen};

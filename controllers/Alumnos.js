@@ -11,11 +11,17 @@ async function getAlumnoId(id){
 async function agregarAlumno(alumno){
     return alumnos.agregarAlumno(alumno);
 }
-async function actualizarAlumno(alumno){
-    return alumnos.actualizarAlumno(alumno);
+
+async function actualizarAlumno(alumno, id){
+    return alumnos.actualizarAlumno(alumno, id);
 }
+
 async function borrarAlumno(id){    
     return alumnos.borrarAlumno(id);
 }
 
-module.exports = {getAlumnoEmail, getAlumnoId, agregarAlumno, actualizarAlumno, borrarAlumno};
+async function getTodosAlumnos(){    
+    return alumnos.getTodosAlumnos();
+}
+
+module.exports = {getAlumnoEmail, getAlumnoId, agregarAlumno, actualizarAlumno, borrarAlumno, getTodosAlumnos};

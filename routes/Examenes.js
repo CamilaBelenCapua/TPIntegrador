@@ -38,7 +38,6 @@ router.delete('/examenes/borrarExamen/:id', async(req,res)=>{
     }
 });
 
-/// ** APIS ESPECIALES ** ///
 
 /* GET api/examenes/listarExamenes */
 router.get('/examenes/listarExamenes', async (req, res) => {    
@@ -49,9 +48,8 @@ router.get('/examenes/listarExamenes', async (req, res) => {
     }
 });
 
-/// ** APIS ESPECIALES ** ///
-
-/* GET api/examenes/consultarSaldo/:id_Examen */
+/*
+GET api/examenes/consultarSaldo/:id_Examen
 router.get('/examenes/consultarSaldo/:id', async (req, res) => {
     try{
         res.json(await controller.consultarSaldo(req.params.id));
@@ -59,6 +57,8 @@ router.get('/examenes/consultarSaldo/:id', async (req, res) => {
         res.sendStatus(400).json(err)
     }
 });
+
+*/
 
 /* GET api/examenes/consultarCursoPago/:idAlumno
 	Filtra los exámenes que tengan el idAlumno como el del parámetro

@@ -19,28 +19,35 @@ async function getAlumnoId(id){
     const alumno = await connectiondb
                         .db(DATABASE)
                         .collection(ALUMNOS)
-                        .find({_id: new objectId(id)})
-                        .toArray();    
+                        .findOne({_id: new objectId(id)});     
     return alumno;
 }
 
 async function agregarAlumno(alumno){
     const connectiondb = await conn.getConnection();
     alumno.password = await bcrypt.hash(alumno.password, 8);
+    const alumnoNuevo = {
+        ...alumno,
+        results: []
+    }
 
     const result = await connectiondb
                         .db(DATABASE)
                         .collection(ALUMNOS)
-                        .insertOne(alumno);
+                        .insertOne(alumnoNuevo);
     return result;
 }
 
-async function actualizarAlumno(alumno){
+async function actualizarAlumno(alumno, id){
     const connectiondb = await conn.getConnection();
     const result = await connectiondb
                         .db(DATABASE)
-                        .collection(ALUMNOS)   
-                        .updateOne(alumno);
+                        .collection(ALUMNOS)
+                        .updateOne({_id: new objectId(id)}, 
+                                    {$set: {name: alumno.name, 
+                                            email: alumno.email, 
+                                            password: await bcrypt.hash(alumno.password, 8),
+                                            phone: alumno.phone}});
     return result;
 }
 
@@ -53,4 +60,14 @@ async function borrarAlumno(id){
     return result;
 }
 
-module.exports = {getAlumnoEmail, getAlumnoId, agregarAlumno, actualizarAlumno, borrarAlumno};
+async function getTodosAlumnos(){
+    const connectiondb = await conn.getConnection();
+    const alumnos = await connectiondb
+                        .db(DATABASE)
+                        .collection(ALUMNOS)
+                        .find({})
+                        .toArray();    
+    return alumnos;
+}
+
+module.exports = {getAlumnoEmail, getAlumnoId, agregarAlumno, actualizarAlumno, borrarAlumno, getTodosAlumnos};

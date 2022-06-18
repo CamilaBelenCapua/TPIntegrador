@@ -8,17 +8,23 @@ async function getExamen(id){
     const examen = await connectiondb
                         .db(DATABASE)
                         .collection(EXAMENES)
-                        .find({_id: new objectId(id)})
-                        .toArray();    
+                        .findOne({_id: new objectId(id)});    
     return examen;
 }
 
 async function agregarExamen(examen){
     const connectiondb = await conn.getConnection();
+    const examenNuevo = {
+        ...examen,
+        date: new Date(),
+        videos: [],
+        questions: []
+    }
+
     const result = await connectiondb
                         .db(DATABASE)
                         .collection(EXAMENES)
-                        .insertOne(examen);
+                        .insertOne(examenNuevo);
     return result;
 }
 
@@ -27,7 +33,9 @@ async function actualizarExamen(examen, id){
     const result = await connectiondb
                         .db(DATABASE)
                         .collection(EXAMENES)
-                        .updateOne({_id: new objectId(id)}, {$set: {name: examen.name}});
+                        .updateOne({_id: new objectId(id)}, 
+                                    {$set: {name: examen.name,
+                                            amount: examen.amount}});
     return result;
 }
 
@@ -42,25 +50,27 @@ async function borrarExamen(id){
 
 async function getTodosExamenes(){
     const connectiondb = await conn.getConnection();
-    const examen = await connectiondb
+    const examenes = await connectiondb
                         .db(DATABASE)
                         .collection(EXAMENES)
                         .find({})
                         .toArray();    
-    return examen;
+    return examenes;
 }
+
+/*
 
 async function consultarSaldo(id){
     const connectiondb = await conn.getConnection();
     const exam = await connectiondb
                 .db(DATABASE)
                 .collection(EXAMENES)
-                .find({_id: new objectId(id)})
-                .toArray();
+                .findOne({_id: new objectId(id)});
+    
     const estePago = exam.pago ? estePago = exam.pago : estePago = 0;
     const result = exam.cuota - estePago;
     return result;
 }
+*/
 
-
-module.exports = {getExamen, agregarExamen, actualizarExamen, borrarExamen, getTodosExamenes, consultarSaldo};
+module.exports = {getExamen, agregarExamen, actualizarExamen, borrarExamen, getTodosExamenes};

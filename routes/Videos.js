@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 const controller = require('../controllers/Videos');
 
-/* GET api/videos/consultarVideo/:id */
+/*
+GET api/videos/consultarVideo/:id 
 router.get('/videos/consultarVideo/:id', async (req, res) => {
     try{  
         res.json(await controller.getVideo(req.params.id));}
@@ -11,7 +12,7 @@ router.get('/videos/consultarVideo/:id', async (req, res) => {
     }
 });
 
-/* POST api/videos/agregarVideo BODY -> DATOS */
+POST api/videos/agregarVideo BODY -> DATOS
 router.post('/videos/agregarVideo', async(req, res) => {
     try{  
         res.json(await controller.agregarVideo(req.body));
@@ -20,7 +21,7 @@ router.post('/videos/agregarVideo', async(req, res) => {
     }
 });
 
-/* PUT api/videos/actualizarVideo BODY -> DATOS */
+PUT api/videos/actualizarVideo BODY -> DATOS
 router.put('/videos/actualizarVideo/:id', async(req,res)=>{
     try{  
         res.json(await controller.actualizarVideo(req.body));
@@ -29,10 +30,20 @@ router.put('/videos/actualizarVideo/:id', async(req,res)=>{
     }
 });
 
-/* DELETE api/videos/borrarVideo:id */
+DELETE api/videos/borrarVideo:id
 router.delete('/videos/borrarVideo/:id', async(req,res)=>{
     try{  
         res.json(await controller.borrarVideo(req.params.id));
+    }catch(err){
+        res.sendStatus(400).json(err)
+    }
+});
+*/
+
+/* PUT api/videos/agregarVideosExamen/:id BODY -> DATOS */
+router.put('/videos/agregarVideosExamen/:id', async(req, res) => {
+    try{
+        res.json(await controller.agregarVideosExamen(req.params.id, req.body));
     }catch(err){
         res.sendStatus(400).json(err)
     }

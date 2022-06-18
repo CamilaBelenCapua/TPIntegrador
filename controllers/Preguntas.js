@@ -1,5 +1,6 @@
 const preguntas = require('../data/Preguntas');
 
+/*
 async function getPregunta(id){    
     return preguntas.getPregunta(id);
 }
@@ -15,5 +16,10 @@ async function actualizarPregunta(pregunta){
 async function borrarPregunta(id){    
     return preguntas.borrarPregunta(id);
 }
+*/
 
-module.exports = {getPregunta, agregarPregunta, actualizarPregunta, borrarPregunta};
+async function agregarPreguntasExamen(id, pregunta){
+    return preguntas.agregarPreguntasExamen(id, pregunta);
+}
+
+module.exports = {agregarPreguntasExamen};

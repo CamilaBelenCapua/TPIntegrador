@@ -1,5 +1,6 @@
 const resultados = require('../data/Resultados');
 
+/*
 async function getResultado(id){    
     return resultados.getResultado(id);
 }
@@ -13,5 +14,11 @@ async function actualizarResultado(resultado){
 async function borrarResultado(id){    
     return resultados.borrarResultado(id);
 }
+*/
 
-module.exports = {getResultado, agregarResultado, actualizarResultado, borrarResultado};
+async function agregarResultadoAlumno(id, resultado){
+    return resultados.agregarResultadoAlumno(id, resultado);
+}
+
+
+module.exports = {agregarResultadoAlumno};

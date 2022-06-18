@@ -1,5 +1,6 @@
 const videos = require('../data/Videos');
 
+/*
 async function getVideo(id){    
     return videos.getVideo(id);
 }
@@ -15,5 +16,10 @@ async function actualizarVideo(video){
 async function borrarVideo(id){    
     return videos.borrarVideo(id);
 }
+*/
 
-module.exports = {getVideo, agregarVideo, actualizarVideo, borrarVideo};
+async function agregarVideosExamen(id, video){
+    return videos.agregarVideosExamen(id, video);
+}
+
+module.exports = {agregarVideosExamen};

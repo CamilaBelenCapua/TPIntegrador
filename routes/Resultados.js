@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 const controller = require('../controllers/Resultados');
 
-/* GET api/resultados/consultarResultado/:id */
+/*
+GET api/resultados/consultarResultado/:id
 router.get('/resultados/consultarResultado/:id', async (req, res) => {
     try{   
         res.json(await controller.getResultado(req.params.id));
@@ -11,7 +12,7 @@ router.get('/resultados/consultarResultado/:id', async (req, res) => {
     }
 });
 
-/* POST api/resultados/agregarResultado BODY -> DATOS */
+POST api/resultados/agregarResultado BODY -> DATOS
 router.post('/resultados/agregarResultado', async(req, res) => {
     try{
         res.json(await controller.agregarResultado(req.body));
@@ -20,7 +21,7 @@ router.post('/resultados/agregarResultado', async(req, res) => {
     }
 });
 
-/* PUT api/resultados/actualizarResultado BODY -> DATOS */
+PUT api/resultados/actualizarResultado BODY -> DATOS
 router.put('/resultados/actualizarResultado', async(req,res)=>{
     try{
         res.json(await controller.actualizarResultado(req.body));
@@ -29,10 +30,20 @@ router.put('/resultados/actualizarResultado', async(req,res)=>{
     }
 });
 
-/* DELETE api/resultados/borrarResultado/:id */
+DELETE api/resultados/borrarResultado/:id
 router.delete('/resultados/borrarResultado/:id', async(req,res)=>{
     try{
         res.json(await controller.borrarResultado(req.params.id));
+    }catch(err){
+        res.sendStatus(400).json(err)
+    }
+});
+*/
+
+/* PUT api/resultados/agregarResultadosAlumno/:id BODY -> DATOS */
+router.put('/resultados/agregarResultadosAlumno/:id', async(req, res) => {
+    try{
+        res.json(await controller.agregarResultadoAlumno(req.params.id, req.body));
     }catch(err){
         res.sendStatus(400).json(err)
     }

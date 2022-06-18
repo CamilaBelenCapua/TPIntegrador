@@ -29,19 +29,29 @@ router.post('/alumnos/agregarAlumno', async(req, res) => {
     }
 });
 
-/* PUT api/alumnos/actualizarAlumno BODY -> DATOS */
-router.put('/alumnos/actualizarAlumno', async(req,res)=>{
+/* PUT api/alumnos/actualizarAlumno/:id BODY -> DATOS */
+router.put('/alumnos/actualizarAlumno/:id', async(req,res)=>{
     try{
-        res.json(await controller.actualizarAlumno(req.body));
+        res.json(await controller.actualizarAlumno(req.body, req.params.id));
     }catch(err){
         res.sendStatus(400).json(err)
     }
 });
 
+
 /* DELETE api/alumnos/borrarAlumno/:id */
 router.delete('/alumnos/borrarAlumno/:id', async(req,res)=>{
     try{
         res.json(await controller.borrarAlumno(req.params.id));
+    }catch(err){
+        res.sendStatus(400).json(err)
+    }
+});
+
+/* GET api/alumnos/listarAlumnos */
+router.get('/alumnos/listarAlumnos', async (req, res) => {    
+    try{
+        res.json(await controller.getTodosAlumnos());
     }catch(err){
         res.sendStatus(400).json(err)
     }
