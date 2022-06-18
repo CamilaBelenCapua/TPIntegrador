@@ -49,11 +49,11 @@ async function agregarPreguntasExamen(id, pregunta){
                         .collection(PREGUNTAS)
                         .findOne({_id: new objectId(id)});
 
-    examen.preguntas.push(pregunta)
+    examen.questions.push(pregunta)
     const result = await connectiondb
                         .db(DATABASE)
                         .collection(PREGUNTAS)
-                        .updateOne({_id: new objectId(id)}, {$set: {preguntas: examen.preguntas}});                        
+                        .updateOne({_id: new objectId(id)}, {$set: {questions: examen.questions}});                        
     return result;
 }
 

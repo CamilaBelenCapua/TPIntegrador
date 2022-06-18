@@ -48,11 +48,11 @@ async function agregarResultadoAlumno(id, resultado){
                             .collection(RESULTADOS)
                             .findOne({_id: new objectId(id)});
 
-        alumno.resultados.push(resultado)
+        alumno.results.push(resultado)
         const result = await connectiondb
                             .db(DATABASE)
                             .collection(RESULTADOS)
-                            .updateOne({_id: new objectId(id)}, {$set: {resultados: alumno.resultados}});                        
+                            .updateOne({_id: new objectId(id)}, {$set: {results: alumno.results}});                        
         return result;
 }
 

@@ -35,6 +35,7 @@ Videos
 
 PUT api/videos/agregarVideosExamen/:id BODY -> DATOS
 
+POST api/alumnos/agregarProfesores/:id BODY -> DATOS
 
 
 
