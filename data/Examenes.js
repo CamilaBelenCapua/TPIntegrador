@@ -58,19 +58,4 @@ async function getTodosExamenes(){
     return examenes;
 }
 
-/*
-
-async function consultarSaldo(id){
-    const connectiondb = await conn.getConnection();
-    const exam = await connectiondb
-                .db(DATABASE)
-                .collection(EXAMENES)
-                .findOne({_id: new objectId(id)});
-    
-    const estePago = exam.pago ? estePago = exam.pago : estePago = 0;
-    const result = exam.cuota - estePago;
-    return result;
-}
-*/
-
 module.exports = {getExamen, agregarExamen, actualizarExamen, borrarExamen, getTodosExamenes};

@@ -24,10 +24,4 @@ async function agregarVideosExamen(id, resultado){
     return resultados.agregarVideosExamen(id, resultado);
 }
 
-/*
-async function consultarSaldo(id){    
-    return examenes.consultarSaldo(id);
-}
-*/
-
 module.exports = {getExamen,agregarExamen,actualizarExamen,borrarExamen, getTodosExamenes, agregarVideosExamen};
