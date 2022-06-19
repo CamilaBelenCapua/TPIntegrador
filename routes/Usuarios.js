@@ -2,20 +2,20 @@ var express = require('express');
 var router = express.Router();
 const controller = require('../controllers/Usuarios');
 
-/* GET api/usuarios/consultarAlumnoPorMail/:email */
-router.get('/usuarios/consultarAlumnoPorMail/:email', async (req, res) => {
+/* GET api/usuarios/consultarUsuarioPorMail/:email */
+router.get('/usuarios/consultarUsuarioPorMail/:email', async (req, res) => {
     try{   
-        const usuario = await controller.getAlumnoEmail(req.params.email);
+        const usuario = await controller.getUsuarioByEmail(req.params.email);
         res.status(200).json(usuario);
     }catch(err){
         res.status(400).send('Error ' + err.message)
     }
 });
 
-/* GET api/usuarios/consultarAlumno/:id */
-router.get('/usuarios/consultarAlumno/:id', async (req, res) => {
+/* GET api/usuarios/consultarUsuario/:id */
+router.get('/usuarios/consultarUsuario/:id', async (req, res) => {
     try{
-        const usuarios = await controller.getAlumnoId(req.params.id);
+        const usuarios = await controller.getUsuarioById(req.params.id);
         res.status(200).json(usuarios);
     }catch(err){
         res.status(400).send('Error ' + err.message)

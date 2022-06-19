@@ -1,8 +1,7 @@
-
 Alumnos
 
-GET api/usuarios/consultarAlumnoPorMail/:email
-GET api/usuarios/consultarAlumno/:id
+GET api/usuarios/consultarUsuarioPorMail/:email
+GET api/usuarios/consultarUsuario/:id
 POST api/usuarios/agregarAlumno BODY -> DATOS
 POST api/usuarios/agregarProfesor BODY -> DATOS
 PUT api/usuarios/actualizarAlumno BODY -> DATOS

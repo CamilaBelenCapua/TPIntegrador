@@ -30,6 +30,12 @@ async function agregarExamen(examen){
 
 async function actualizarExamen(examen, id){
     const connectiondb = await conn.getConnection();
+    const examenEncontrado = await getExamen(id);
+
+    if(!examenEncontrado){
+        throw new Error('No existe examen para ese id')
+    }
+
     const result = await connectiondb
                         .db(DATABASE)
                         .collection(EXAMENES)
@@ -41,6 +47,12 @@ async function actualizarExamen(examen, id){
 
 async function borrarExamen(id){
     const connectiondb = await conn.getConnection();
+    const examenEncontrado = await getExamen(id);
+
+    if(!examenEncontrado){
+        throw new Error('No existe examen para ese id')
+    }
+    
     const result = await connectiondb
                         .db(DATABASE)
                         .collection(EXAMENES)

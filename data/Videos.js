@@ -10,6 +10,10 @@ async function agregarVideosExamen(id, video){
                         .db(DATABASE)
                         .collection(VIDEOS)
                         .findOne({_id: new objectId(id)});
+    
+    if(!examen){
+        throw new Error('No existe examen para ese id')
+    }
 
     examen.videos.push(video)
     const result = await connectiondb

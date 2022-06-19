@@ -1,11 +1,11 @@
 const usuarios = require('../data/Usuarios');
 
-async function getAlumnoEmail(Email){    
-    return usuarios.getAlumnoEmail(Email);
+async function getUsuarioByEmail(Email){    
+    return usuarios.getUsuarioByEmail(Email);
 }
 
-async function getAlumnoId(id){    
-    return usuarios.getAlumnoId(id);
+async function getUsuarioById(id){    
+    return usuarios.getUsuarioById(id);
 }
 
 async function agregarAlumno(alumno){
@@ -28,4 +28,4 @@ async function getTodosAlumnos(){
     return usuarios.getTodosAlumnos();
 }
 
-module.exports = {getAlumnoEmail, getAlumnoId, agregarAlumno, agregarProfesor, actualizarAlumno, borrarAlumno, getTodosAlumnos};
+module.exports = {getUsuarioByEmail, getUsuarioById, agregarAlumno, agregarProfesor, actualizarAlumno, borrarAlumno, getTodosAlumnos};

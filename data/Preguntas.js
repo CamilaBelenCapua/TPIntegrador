@@ -9,6 +9,10 @@ async function agregarPreguntasExamen(id, pregunta){
                         .db(DATABASE)
                         .collection(PREGUNTAS)
                         .findOne({_id: new objectId(id)});
+                        
+    if(!examen){
+        throw new Error('No existe examen para ese id')
+    }
 
     examen.questions.push(pregunta)
     const result = await connectiondb

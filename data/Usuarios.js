@@ -4,7 +4,7 @@ const USUARIOS = 'Usuarios';
 const objectId = require('mongodb').ObjectId;
 const bcrypt = require('bcrypt');
 
-async function getAlumnoEmail(email){
+async function getUsuarioByEmail(email){
     const connectiondb = await conn.getConnection();
     const usuario = await connectiondb
                         .db(DATABASE)
@@ -14,7 +14,7 @@ async function getAlumnoEmail(email){
     return usuario;
 }
 
-async function getAlumnoId(id){
+async function getUsuarioById(id){
     const connectiondb = await conn.getConnection();
     const usuario = await connectiondb
                         .db(DATABASE)
@@ -55,7 +55,7 @@ async function agregarProfesor(profesor){
 
 async function actualizarAlumno(alumno, id){
     const connectiondb = await conn.getConnection();
-    const usuario = await getAlumnoId(id)
+    const usuario = await getUsuarioById(id)
 
     if(!usuario || !(usuario.rol === 'alumno')){
         throw new Error('No existe alumno para ese id')
@@ -73,7 +73,7 @@ async function actualizarAlumno(alumno, id){
 
 async function borrarAlumno(id){
     const connectiondb = await conn.getConnection();
-    const usuario = await getAlumnoId(id)
+    const usuario = await getUsuarioById(id)
     if(!usuario || !(usuario.rol === 'alumno')){
         throw new Error('No existe alumno para ese id')
     }
@@ -93,4 +93,4 @@ async function getTodosAlumnos(){
     return usuarios;
 }
 
-module.exports = {getAlumnoEmail, getAlumnoId, agregarAlumno, agregarProfesor, actualizarAlumno, borrarAlumno, getTodosAlumnos};
+module.exports = {getUsuarioByEmail, getUsuarioById, agregarAlumno, agregarProfesor, actualizarAlumno, borrarAlumno, getTodosAlumnos};
