@@ -28,13 +28,30 @@ async function agregarAlumno(alumno){
     alumno.password = await bcrypt.hash(alumno.password, 8);
     const alumnoNuevo = {
         ...alumno,
-        results: []
+        results: [],
+        rol: 'alumno'
     }
 
     const result = await connectiondb
                         .db(DATABASE)
                         .collection(ALUMNOS)
                         .insertOne(alumnoNuevo);
+    return result;
+}
+
+async function agregarProfesor(profesor){
+    const connectiondb = await conn.getConnection();
+    profesor.password = await bcrypt.hash(profesor.password, 8);
+    const profesorNuevo = {
+        ...profesor,
+        results: [],
+        rol: 'profesor'
+    }
+
+    const result = await connectiondb
+                        .db(DATABASE)
+                        .collection(ALUMNOS)
+                        .insertOne(profesorNuevo);
     return result;
 }
 
@@ -53,10 +70,19 @@ async function actualizarAlumno(alumno, id){
 
 async function borrarAlumno(id){
     const connectiondb = await conn.getConnection();
-    const result = await connectiondb
+    let result = false;
+    const alumno = await connectiondb
                         .db(DATABASE)
                         .collection(ALUMNOS)
-                        .deleteOne({_id: new objectId(id)});
+                        .findOne({_id: new objectId(id)});
+    
+        if(alumno !== null && alumno.rol === alumno){
+            deleted = deleteOne({_id: new objectId(id)});
+        }
+
+        if(deleted.deletedCount === 1){
+            result = true;
+        }                             
     return result;
 }
 
@@ -70,4 +96,4 @@ async function getTodosAlumnos(){
     return alumnos;
 }
 
-module.exports = {getAlumnoEmail, getAlumnoId, agregarAlumno, actualizarAlumno, borrarAlumno, getTodosAlumnos};
+module.exports = {getAlumnoEmail, getAlumnoId, agregarAlumno, agregarProfesor, actualizarAlumno, borrarAlumno, getTodosAlumnos};
