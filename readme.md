@@ -1,4 +1,4 @@
-Alumnos
+Usuarios
 
 GET api/usuarios/consultarUsuarioPorMail/:email
 GET api/usuarios/consultarUsuario/:id
@@ -7,6 +7,7 @@ POST api/usuarios/agregarProfesor BODY -> DATOS
 PUT api/usuarios/actualizarAlumno BODY -> DATOS
 DELETE api/usuarios/borrarAlumno/:id
 GET api/usuarios/listarAlumnos
+POST api/usuarios/login
 
 Resultados
 

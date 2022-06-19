@@ -4,6 +4,25 @@ const USUARIOS = 'Usuarios';
 const objectId = require('mongodb').ObjectId;
 const bcrypt = require('bcrypt');
 
+
+async function findByCredentials(email, password){
+    const connectiondb = await conn.getConnection();
+    const usuario = await connectiondb
+                        .db(DATABASE)
+                        .collection(USUARIOS)
+                        .findOne({email: email});
+    if(!usuario){
+        throw new Error('Credenciales no validas');
+    }
+
+    const isMatch = await bcrypt.compare(password, usuario.password);
+    
+    if(!isMatch){
+        throw new Error('Credenciales no validas');
+    }
+    return usuario;
+}
+
 async function getUsuarioByEmail(email){
     const connectiondb = await conn.getConnection();
     const usuario = await connectiondb
@@ -93,4 +112,5 @@ async function getTodosAlumnos(){
     return usuarios;
 }
 
-module.exports = {getUsuarioByEmail, getUsuarioById, agregarAlumno, agregarProfesor, actualizarAlumno, borrarAlumno, getTodosAlumnos};
+module.exports = {findByCredentials, getUsuarioByEmail, getUsuarioById, agregarAlumno, agregarProfesor, 
+                    actualizarAlumno, borrarAlumno, getTodosAlumnos};

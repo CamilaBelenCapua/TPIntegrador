@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
 const controller = require('../controllers/Preguntas');
+const auth = require('../middleware/auth');
 
 /* PUT api/preguntas/agregarPreguntasExamen/:id BODY -> DATOS */
-router.put('/preguntas/agregarPreguntasExamen/:id', async(req, res) => {
+router.put('/preguntas/agregarPreguntasExamen/:id',auth, async(req, res) => {
     try{
         const preguntas = await controller.agregarPreguntasExamen(req.params.id, req.body);
         res.status(200).json(preguntas);

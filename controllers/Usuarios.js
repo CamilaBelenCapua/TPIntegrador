@@ -1,4 +1,5 @@
 const usuarios = require('../data/Usuarios');
+const jwt = require('jsonwebtoken');
 
 async function getUsuarioByEmail(Email){    
     return usuarios.getUsuarioByEmail(Email);
@@ -28,4 +29,14 @@ async function getTodosAlumnos(){
     return usuarios.getTodosAlumnos();
 }
 
-module.exports = {getUsuarioByEmail, getUsuarioById, agregarAlumno, agregarProfesor, actualizarAlumno, borrarAlumno, getTodosAlumnos};
+async function findByCredential(Email, password){
+    return usuarios.findByCredentials(Email, password);
+}
+
+async function generateAuthToken(usuarios){
+    const token = jwt.sign({_id: usuarios._id}, process.env.SECRET, {expiresIn: '2h'});
+    return token;
+}
+
+module.exports = {findByCredential, generateAuthToken, getUsuarioByEmail, getUsuarioById, agregarAlumno, 
+                    agregarProfesor, actualizarAlumno, borrarAlumno, getTodosAlumnos};
