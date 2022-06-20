@@ -20,8 +20,4 @@ async function getTodosExamenes(){
     return examenes.getTodosExamenes();
 }
 
-async function agregarVideosExamen(id, resultado){
-    return resultados.agregarVideosExamen(id, resultado);
-}
-
-module.exports = {getExamen,agregarExamen,actualizarExamen,borrarExamen, getTodosExamenes, agregarVideosExamen};
+module.exports = {getExamen,agregarExamen,actualizarExamen,borrarExamen, getTodosExamenes};

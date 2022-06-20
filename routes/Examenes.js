@@ -17,7 +17,7 @@ router.get('/examenes/consultarExamen/:id', auth, async (req, res) => {
 /* POST api/examenes/agregarExamen BODY -> DATOS */
 router.post('/examenes/agregarExamen',auth,checkRols.checkRols('profesor'), async(req, res) => {
     try{
-        const examen = res.json(await controller.agregarExamen(req.body));
+        const examen = await controller.agregarExamen(req.body);
         res.status(200).json(examen);
     }catch(err){
         res.status(400).send('Error ' + err.message)
