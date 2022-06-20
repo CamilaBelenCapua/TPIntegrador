@@ -46,7 +46,7 @@ router.post('/usuarios/agregarAlumno',auth,checkRols.checkRols('profesor'), asyn
 });
 
 /* POST api/usuarios/agregarProfesor BODY -> DATOS */
-router.post('/usuarios/agregarProfesor', auth,checkRols.checkRols('profesor'), async(req, res) => {
+router.post('/usuarios/agregarProfesor',auth,checkRols.checkRols('profesor'), async(req, res) => {
     try{
         const usuario = await controller.agregarProfesor(req.body);
         res.status(200).json(usuario);

@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-const usuarios = require('../data/Usuarios');
 
 function auth(req, res, next){
     try {

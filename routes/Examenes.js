@@ -5,7 +5,7 @@ const {auth} = require('../middleware/auth');
 const checkRols = require('../middleware/checkRol');
 
 /* GET api/examenes/consultarExamen/:id */
-router.get('/examenes/consultarExamen/:id', auth,checkRols.checkRols('profesor', 'alumno'), async (req, res) => {
+router.get('/examenes/consultarExamen/:id', auth, async (req, res) => {
     try{
         const examen = await controller.getExamen(req.params.id);
         res.status(200).json(examen);
@@ -43,7 +43,6 @@ router.delete('/examenes/borrarExamen/:id',auth,checkRols.checkRols('profesor'),
         res.status(400).send('Error ' + err.message)
     }
 });
-
 
 /* GET api/examenes/listarExamenes */
 router.get('/examenes/listarExamenes',auth,checkRols.checkRols('profesor'), async (req, res) => {    

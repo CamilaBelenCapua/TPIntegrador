@@ -16,7 +16,8 @@ async function agregarExamen(examen){
     const connectiondb = await conn.getConnection();
     const examenNuevo = {
         ...examen,
-        date: new Date(),
+        date: new Date().getDate() + '/' + new Date().getMonth() + '/' + 
+        new Date().getFullYear(),
         videos: [],
         questions: []
     }
