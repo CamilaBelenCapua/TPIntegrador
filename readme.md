@@ -29,7 +29,11 @@ Examenes
 GET api/examenes/listarExamenes
 GET api/examenes/consultarExamen/:id
 POST api/examenes/agregarExamen BODY -> DATOS
+<<<<<<< HEAD
 PUT api/examenes/actualizarExamen/:id BODY -> DATOS 
+=======
+PUT api/examenes/actualizarExamen/ :id BODY -> DATOS 
+>>>>>>> 578cf0b5876a6760898ba8f85897292e484bd42d
 DELETE api/examenes/borrarExamen/:id
 
 Preguntas
