@@ -1,3 +1,14 @@
+La aplicación es un gestor de examenes, con dos roles de usuario. Por un lado el profesor, el cual podrá:
+* Ver los examenes de los alumnos. 
+* Actualizar los datos de cualquier alumno, como asi tambien crearlos o eliminarlos.
+* Agregar si se dió de alta un profesor.
+* Editar los examenes.
+* Listar los examentes y consultarlos.
+* Crear los resultados de cada examen para cada alumno.
+* Crear los examenes, las preguntas y los videos.
+
+Por otro lado el alumno podrá ver su examen mediante un id.
+
 Usuarios
 
 GET api/usuarios/consultarUsuarioPorMail/:email
