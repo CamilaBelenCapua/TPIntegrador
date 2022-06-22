@@ -28,8 +28,7 @@ async function getUsuarioByEmail(email){
     const usuario = await connectiondb
                         .db(DATABASE)
                         .collection(USUARIOS)
-                        .find({email: email})
-                        .toArray(); 
+                        .findOne({email: email})
     return usuario;
 }
 
@@ -44,7 +43,10 @@ async function getUsuarioById(id){
 
 async function agregarAlumno(alumno){
     const connectiondb = await conn.getConnection();
+    await checkUsuarioEmail(alumno); 
+
     alumno.password = await bcrypt.hash(alumno.password, 8);
+
     const alumnoNuevo = {
         ...alumno,
         rol: 'alumno',
@@ -59,6 +61,7 @@ async function agregarAlumno(alumno){
 
 async function agregarProfesor(profesor){
     const connectiondb = await conn.getConnection();
+    await checkUsuarioEmail(profesor); 
     profesor.password = await bcrypt.hash(profesor.password, 8);
     const profesorNuevo = {
         ...profesor,
@@ -72,6 +75,13 @@ async function agregarProfesor(profesor){
     return result;
 }
 
+async function checkUsuarioEmail(usuario){
+    const usuarioMail = getUsuarioByEmail(usuario.email);
+    if(usuarioMail){
+        throw new Error('Email ya registrado')
+    }
+}
+
 async function actualizarAlumno(alumno, id){
     const connectiondb = await conn.getConnection();
     const usuario = await getUsuarioById(id)
@@ -79,6 +89,9 @@ async function actualizarAlumno(alumno, id){
     if(!usuario || !(usuario.rol === 'alumno')){
         throw new Error('No existe alumno para ese id')
     }
+
+    await checkUsuarioEmail(alumno) 
+
     const result = await connectiondb
                         .db(DATABASE)
                         .collection(USUARIOS)

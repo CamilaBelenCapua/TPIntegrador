@@ -7,7 +7,7 @@ La aplicación es un gestor de examenes, con dos roles de usuario. Por un lado e
 * Crear los resultados de cada examen para cada alumno.
 * Crear los examenes, las preguntas y los videos.
 
-Por otro lado el alumno podrá ver su examen mediante un id.
+Por otro lado el alumno donde podrá ver su examen mediante un id.
 
 Usuarios
 
@@ -29,11 +29,7 @@ Examenes
 GET api/examenes/listarExamenes
 GET api/examenes/consultarExamen/:id
 POST api/examenes/agregarExamen BODY -> DATOS
-<<<<<<< HEAD
 PUT api/examenes/actualizarExamen/:id BODY -> DATOS 
-=======
-PUT api/examenes/actualizarExamen/ :id BODY -> DATOS 
->>>>>>> 578cf0b5876a6760898ba8f85897292e484bd42d
 DELETE api/examenes/borrarExamen/:id
 
 Preguntas
