@@ -76,7 +76,7 @@ async function agregarProfesor(profesor){
 }
 
 async function checkUsuarioEmail(usuario){
-    const usuarioMail = getUsuarioByEmail(usuario.email);
+    const usuarioMail = await getUsuarioByEmail(usuario.email);
     if(usuarioMail){
         throw new Error('Email ya registrado')
     }
